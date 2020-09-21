@@ -1,6 +1,6 @@
 from app import app, cache
 from app.models import Page, User
-from app.big_brain import Interpreter
+#from app.big_brain import Interpreter
 
 from flask import render_template, request, redirect
 from werkzeug.exceptions import NotFound
