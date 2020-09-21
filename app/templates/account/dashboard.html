@@ -1,0 +1,19 @@
+{% extends "utils/base.html" %}
+
+{% block content %}
+    {% include "utils/_navbar_top.html" %}
+    <br><br><br><br>
+    <div class="container border col-md-4 align-content-center">
+        <br>
+        <img src="{{ user.get_gravatar(size=200) }}" class="img-fluid rounded-circle mx-auto d-block"><br>
+        <h3 class="text-center"><strong>{{ user.name }}</strong></h3>
+        <p class="text-center text-muted"><em>{{ user.email }}</em></p>
+        <button style="width: 8em" class="btn btn-secondary mx-auto d-block">Edit Profile</button>
+        <div style="height: 1em"></div>
+        {% if not user.premium %}
+        <button style="width: 8em" class="btn btn-primary mx-auto d-block">Get Premium</button>
+        {% endif %}
+        <br>
+    </div>
+
+{% endblock %}

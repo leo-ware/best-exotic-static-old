@@ -1,0 +1,40 @@
+{# Assumes it is inhereting from base.html #}
+
+<div class="pos-f-t" style="position: sticky">
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="/" class="navbar-brand mr-auto" style="position:relative; left: 20px;">The Best Exotic TOEFL</a>
+        {% if user.is_authenticated %}
+        <div class="border-0 navbar-toggler" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+            style="max-height: 40px%; padding-bottom: 0;">
+            <p class="navbar-text text-light" style="margin-right: 1em">Hi, {{ user.name }}</p>
+            <img src="{{ user.get_gravatar() }}" width="25em" height="25em" class="rounded-circle">
+        </div>
+        {% endif%}
+
+    </nav>
+    <div class="collapse container-fluid" id="navbarToggleExternalContent">
+        <div class="row bg-dark p-4">
+            <div class="col-md-4" style="position: relative; left: 3.6em;">
+                <h5 class="text-white h5">What can we do for you?</h5>
+                <a class="text-light" href="/">Home</a><br>
+                <a class="text-light" href="/articles/browse">Articles</a><br>
+                <a class="text-light" href="/essays">Essay Grading Service</a><br>
+                <a class="text-light" href="/flashcards">Flashcards</a><br>
+                <a class="text-light" href="/tutors">Tutors</a><br>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-2" style="position: relative; left: 3.7em;">
+                <h5 class="text-white h5">Account</h5>
+                <a class="text-light" href="/dashboard">Dashboard</a><br>
+                {% if user.is_authenticated %}
+                <a class="text-light" href="/logout">Logout</a><br>
+                {% else %}
+                <a class="text-light" href="/login">Login</a><br>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

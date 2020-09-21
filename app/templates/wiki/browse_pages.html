@@ -1,0 +1,30 @@
+{% extends "utils/base.html" %}
+
+{% block content %}
+    {% include "utils/_navbar_top.html" %}
+
+    <div class="container">
+        <br><br><br><br>
+        <h1 class="display-3 text-dark">Browse Articles</h1>
+        <br><br>
+    </div>
+
+    <div class="container">
+        <form>
+            <input class="form-control" name="query" type="text" placeholder="Search"
+                   {% if query %}value="{{ query }}"{% endif %}>
+        </form>
+        <br>
+        <table class="table">
+            <tbody>
+            {% for page in pages %}
+                <tr>
+                    <td><a class="text-decoration-none" href="/articles/{{ page.title }}">{{ page.title }}</a></td>
+                    <td>{{ page.content_teaser(100) }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

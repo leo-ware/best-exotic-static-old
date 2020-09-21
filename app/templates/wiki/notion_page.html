@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include "utils/_navbar_top.html" %}
+    <div class="container">
+    {{ page | safe }}
+    </div>
+{% endblock %}

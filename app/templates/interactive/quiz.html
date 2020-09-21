@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BE quiz inline</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='quiz.js') }}"></script>
+    <style>
+        body {font-family: "Helvetica Neue", sans-serif}
+    </style>
+</head>
+<body>
+
+{# Pages with forms for all of the questions #}
+{% for question in quiz %}
+    <form class="question" data-question-id="{{ question.id }}" hidden>
+        <h3>{{ question.question }}</h3>
+
+        {# Display the options #}
+        {% for option in question.get_options() %}
+        <div class="">
+            <input class="" type="radio" name="question" value="{{ option }}" id="{{ question.id }}-{{ option }}-option">
+            <label class="" for="{{ question.id }}-{{ option }}-option">{{ option }}</label>
+        </div>
+        {% endfor %}
+
+        <button type="submit">Next</button>
+    </form>
+{% endfor %}
+
+<div data-end="end"></div>
+
+<!-- messages to show on correct/incorrect answer -->
+
+<div id="correct-answer" style="height: 200px;" class="container-fluid bg-success text-success" hidden>
+    <h1>That's correct!</h1>
+    <p class="hint-message"></p>
+</div>
+
+<div id="wrong-answer" style="height: 200px;" class="container-fluid bg-danger text-danger" hidden>
+    <h1>Sorry, that's incorrect.</h1>
+    <p class="hint-message"></p>
+</div>
+
+
+<!-- messages to show on quiz completion -->
+
+<div class="container-fluid" id="quiz-done" hidden>
+    <h3>You finished the quiz!</h3>
+    <p id="summary-text">You got a good score.</p>
+
+    {% if not is_premium %}
+    <p>These are all of the free questions for this entry. Get premium to unlock more questions.</p>
+    {% endif %}
+
+    <a href=""><button>Retake</button></a>
+</div>
+</body>
+</html>

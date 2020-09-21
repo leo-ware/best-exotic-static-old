@@ -1,0 +1,41 @@
+
+{% extends "utils/base.html" %}
+
+{% block head %}
+    <style>
+        body {
+            background-color: #CFCFCF;
+        }
+        .rect-rear {
+            position: absolute;
+            left: 21.6%;
+            right: 18.93%;
+            top: 11.81%;
+            bottom: 31.08%;
+
+            background: #5E5E5E;
+            border-radius: 5px;
+        }
+        .rect-front {
+            position: absolute;
+            left: 19.42%;
+            right: 21.12%;
+            top: 9.9%;
+            bottom: 32.99%;
+
+            background: #FFFFFF;
+            border: 1px solid #5E5E5E;
+            box-sizing: border-box;
+            border-radius: 7px;
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+    {% include "utils/_navbar_top.html" %}
+    <svg baseProfile="full" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="245" height="329" class="mx-auto rect-rear"></rect>
+        <rect width="245" height="329" class="rect-front"></rect>
+    </svg>
+{% endblock %}

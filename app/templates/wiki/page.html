@@ -1,0 +1,32 @@
+{% extends "utils/base.html" %}
+
+{% block content %}
+
+{% include "utils/_navbar_top.html" %}
+
+<div class="container">
+    <br><br><br><br>
+    <h1 id="title">{{ page.title }}</h1><br>
+    <h5 class="text-muted" id="author">{{ page.author }}</h5>
+</div>
+
+<br><br>
+
+<div class="container">
+<div class="row">
+    <div class="col-md-9">
+        {{ page.content | safe }}
+        <br><br>
+    </div>
+
+    <div class="col-md-3">
+        <iframe height="200" src="{{ url_for('quiz_for_page', page_id=page.id) }}" title="inline quiz"></iframe>
+    </div>
+</div>
+</div>
+
+<div class="container text-muted">
+    {{ page.copyright_info }}
+</div>
+
+{% endblock %}
