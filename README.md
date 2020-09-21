@@ -14,3 +14,4 @@ To run the site, clone the repo and then run these commands in the root director
 pip install -r requirements.txt
 flask run
 ```
+Then navigate to localhost:5000 in the browser.
